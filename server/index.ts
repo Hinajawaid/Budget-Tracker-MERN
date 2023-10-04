@@ -32,6 +32,11 @@ connect
 //   origin: allowedOrigins,
 // };
 app.use(cors());
+app.use(
+  cors({
+    origin: "http://13.50.214.44:3000",
+  })
+);
 // const allowedOrigins = ["http://localhost:5173/", "http://localhost:5174/"];
 
 // app.use(
