@@ -14,7 +14,7 @@ export const getBudgetData = async (
   setBudgetDataList: SetBudgetHandler
 ): Promise<boolean> => {
   try {
-    const response = await fetch("http://localhost:5000/budget/all", {
+    const response = await fetch("http://13.50.214.44:5000/budget/all", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,13 +38,16 @@ export const getBudgetData = async (
 export const deleteBudgetData = async (_id: string): Promise<boolean> => {
   try {
     console.log("sdadsd", _id);
-    const response = await fetch(`http://localhost:5000/budget/delete/${_id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      `http://13.50.214.44:5000/budget/delete/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     if (response.ok) {
       console.log("success");
       return true;
@@ -61,7 +64,7 @@ export const postBudgetData = async (
   budgetData: BudgetData
 ): Promise<boolean> => {
   try {
-    const response = await fetch("http://localhost:5000/budget/add", {
+    const response = await fetch("http://13.50.214.44:5000/budget/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +90,7 @@ export const updateBudgetData = async (
   try {
     console.log("sdadsd", budgetData._id);
     const response = await fetch(
-      `http://localhost:5000/budget/update/${budgetData._id}`,
+      `http://13.50.214.44:5000/budget/update/${budgetData._id}`,
       {
         method: "PUT",
         headers: {
@@ -114,7 +117,7 @@ export const useBudgetLimitFetch = () => {
 
   const fetchBudgetLimit = async (): Promise<void> => {
     try {
-      const response = await fetch("http://localhost:8000/budget/limit", {
+      const response = await fetch("http://13.50.214.44:5000/budget/limit", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
