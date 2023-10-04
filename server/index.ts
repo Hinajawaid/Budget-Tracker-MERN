@@ -57,6 +57,14 @@ app.use(cookieParser(process.env.COOKIE_SECRET as string));
 app.use("/users", userRouter);
 app.use("/budget", auth, budgetRouter);
 
-app.listen(port, () => {
-  console.log(`[Server]: I am running at http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`[Server]: I am running at http://localhost:${port}`);
+// });
+const server = app.listen(port, "0.0.0.0", () => {
+  const address = server.address?.();
+  if (address) {
+    console.log(`Server is running on :${port}`);
+  } else {
+    console.error(`Failed to get server address`);
+  }
 });
