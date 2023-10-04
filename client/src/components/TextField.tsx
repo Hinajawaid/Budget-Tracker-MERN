@@ -5,7 +5,7 @@ interface TextFieldCustomProps<T extends string | number> {
     label: string;
     value: T;
     type: string;
-    shrink: boolean; // Removed shrink prop
+    shrink: boolean; 
     style: any;
     onChange: (value: T) => void;
 }
