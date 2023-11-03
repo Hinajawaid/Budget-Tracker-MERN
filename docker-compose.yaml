@@ -1,0 +1,31 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:5000"
+    container_name: mern-server
+    volumes:
+      - ./server:/index
+    depends_on:
+      - client 
+
+  client:
+    image: muhammadmaarij/mernclient
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports:
+      - "80:3000"
+    container_name: mern-client
+    volumes:
+      - ./client/src:/app/src
+      - ./client/public:/app/public
+    depends_on:
+      - server 
+
+networks:
+  default:
+    driver: bridge

@@ -18,7 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-const connect = mongoose.connect("mongodb://127.0.0.1:27017/budget-tracker");
+const connect = mongoose.connect(
+  "mongodb+srv://a:a@cluster0.1cih6pg.mongodb.net/budget-tracker"
+);
 connect
   .then((db) => console.log("connected to db"))
   .catch((err) => {
