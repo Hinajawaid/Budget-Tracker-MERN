@@ -9,8 +9,6 @@ services:
     container_name: mern-server
     volumes:
       - ./server:/index
-    depends_on:
-      - client 
 
   client:
     image: muhammadmaarij/mernclient
