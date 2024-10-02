@@ -18,8 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-const connect = mongoose.connect(
-  "mongodb+srv://a:a@cluster0.1cih6pg.mongodb.net/budget-tracker"
+const connect = mongoose.connect( 
+  "mongodb+srv://fatimaabbasi270:pPZdZc36XUArIzLq@cluster0.rtwxz.mongodb.net/budget-tracker"
 );
 connect
   .then((db) => console.log("connected to db"))
@@ -28,17 +28,17 @@ connect
   });
 
 // setup cors
-// const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173"];
 // const options: cors.CorsOptions = {
 //   // origin: allowedOrigins,
 //   origin: allowedOrigins,
 // };
 app.use(cors());
-app.use(
-  cors({
-    origin: "http://13.50.214.44:3000",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://10.113.66.236:3000",
+//   })
+// );
 // const allowedOrigins = ["http://localhost:5173/", "http://localhost:5174/"];
 
 // app.use(

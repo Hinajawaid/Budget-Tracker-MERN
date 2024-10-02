@@ -41,19 +41,24 @@ const port = 5000;
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Connect to MongoDB
-const connect = mongoose_1.default.connect("mongodb://127.0.0.1:27017/budget-tracker");
+const connect = mongoose_1.default.connect("mongodb+srv://fatimaabbasi270:pPZdZc36XUArIzLq@cluster0.rtwxz.mongodb.net/budget-tracker");
 connect
     .then((db) => console.log("connected to db"))
     .catch((err) => {
     console.log(err);
 });
 // setup cors
-// const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173"];
 // const options: cors.CorsOptions = {
 //   // origin: allowedOrigins,
 //   origin: allowedOrigins,
 // };
 app.use((0, cors_1.default)());
+// app.use(
+//   cors({
+//     origin: "http://10.113.66.236:3000",
+//   })
+// );
 // const allowedOrigins = ["http://localhost:5173/", "http://localhost:5174/"];
 // app.use(
 //   cors({
@@ -66,16 +71,26 @@ app.use((0, cors_1.default)());
 //     },
 //   })
 // );
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+//   next();
+// });
 // app.use(cors(options));
 app.use((0, cookie_parser_1.default)(process.env.COOKIE_SECRET));
 app.use("/users", User_1.default);
 app.use("/budget", auth_1.auth, Budget_1.default);
-app.listen(port, () => {
-    console.log(`[Server]: I am running at http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`[Server]: I am running at http://localhost:${port}`);
+// });
+const server = app.listen(port, "0.0.0.0", () => {
+    var _a;
+    const address = (_a = server.address) === null || _a === void 0 ? void 0 : _a.call(server);
+    if (address) {
+        console.log(`Server is running on :${port}`);
+    }
+    else {
+        console.error(`Failed to get server address`);
+    }
 });

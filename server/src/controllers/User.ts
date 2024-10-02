@@ -4,6 +4,9 @@ import { auth } from "../middlewares/auth";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+export const helloWorld = (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).send("Hello World");
+};
 export const UserSignUp = async (
   req: Request,
   res: Response,
