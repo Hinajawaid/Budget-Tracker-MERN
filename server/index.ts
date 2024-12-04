@@ -36,7 +36,7 @@ const allowedOrigins = ["http://localhost:5173"];
 app.use(cors());
 app.use(
   cors({
-    origin: "http://35.180.254.36:3003",
+    origin: "http://35.180.254.36:3000",
   })
 );
 // const allowedOrigins = ["http://localhost:5173/", "http://localhost:5174/"];
