@@ -6,6 +6,7 @@ import budgetRouter from "./src/routes/Budget";
 
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 require("./src/middlewares/auth");
 
@@ -60,6 +61,13 @@ app.use(
 //   next();
 // });
 // app.use(cors(options));
+// Serve static files from the 'build' folder (React app build output)
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+// Serve index.html for all other requests (to handle React Router routes)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 app.use(cookieParser(process.env.COOKIE_SECRET as string));
 app.use("/users", userRouter);
 app.use("/budget", auth, budgetRouter);
