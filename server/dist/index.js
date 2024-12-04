@@ -37,7 +37,7 @@ require("./src/middlewares/auth");
 const cors_1 = __importDefault(require("cors"));
 const auth_1 = require("./src/middlewares/auth");
 const app = (0, express_1.default)();
-const port = 5001;
+const port = 5002;
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Connect to MongoDB
@@ -55,7 +55,7 @@ const allowedOrigins = ["http://localhost:5173"];
 // };
 app.use((0, cors_1.default)());
 app.use((0, cors_1.default)({
-    origin: "http://35.180.254.36:3000",
+    origin: "http://35.180.254.36:3002",
 }));
 // const allowedOrigins = ["http://localhost:5173/", "http://localhost:5174/"];
 // app.use(
