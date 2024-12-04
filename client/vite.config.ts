@@ -7,5 +7,6 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 3004,
+    strictPort: true, // Ensure no fallback to other ports
   },
 });
