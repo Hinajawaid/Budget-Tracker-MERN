@@ -62,11 +62,11 @@ app.use(
 // });
 // app.use(cors(options));
 // Serve static files from the 'build' folder (React app build output)
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // Serve index.html for all other requests (to handle React Router routes)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
 app.use(cookieParser(process.env.COOKIE_SECRET as string));
 app.use("/users", userRouter);
