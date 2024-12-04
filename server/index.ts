@@ -13,7 +13,7 @@ import cors from "cors";
 import { auth } from "./src/middlewares/auth";
 
 const app: Express = express();
-const port = 5001;
+const port = 5002;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
