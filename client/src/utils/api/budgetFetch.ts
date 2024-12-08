@@ -14,7 +14,7 @@ export const getBudgetData = async (
   setBudgetDataList: SetBudgetHandler
 ): Promise<boolean> => {
   try {
-    const response = await fetch("http://35.180.254.36:5002/budget/all", {
+    const response = await fetch("http://23.21.192.224/budget/all", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,16 +38,13 @@ export const getBudgetData = async (
 export const deleteBudgetData = async (_id: string): Promise<boolean> => {
   try {
     console.log("sdadsd", _id);
-    const response = await fetch(
-      `http://35.180.254.36:5002/budget/delete/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await fetch(`http://23.21.192.224/budget/delete/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     if (response.ok) {
       console.log("success");
       return true;
@@ -64,7 +61,7 @@ export const postBudgetData = async (
   budgetData: BudgetData
 ): Promise<boolean> => {
   try {
-    const response = await fetch("http://35.180.254.36:5002/budget/add", {
+    const response = await fetch("http://23.21.192.224/budget/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +87,7 @@ export const updateBudgetData = async (
   try {
     console.log("sdadsd", budgetData._id);
     const response = await fetch(
-      `http://35.180.254.36:5002/budget/update/${budgetData._id}`,
+      `http://23.21.192.224/budget/update/${budgetData._id}`,
       {
         method: "PUT",
         headers: {
@@ -117,7 +114,7 @@ export const useBudgetLimitFetch = () => {
 
   const fetchBudgetLimit = async (): Promise<void> => {
     try {
-      const response = await fetch("http://35.180.254.36:5002/budget/limit", {
+      const response = await fetch("http://23.21.192.224/budget/limit", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
